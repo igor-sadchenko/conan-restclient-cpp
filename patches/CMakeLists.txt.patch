@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eb5bb77..a944f24 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,10 +1,9 @@
+ 
+-cmake_minimum_required(VERSION 3.12.0)
++cmake_minimum_required(VERSION 3.9.0)
+ 
+ project(restclient-cpp
+   VERSION 0.5.2
+   DESCRIPTION "REST client for C++"
+-  HOMEPAGE_URL "http://code.mrtazz.com/restclient-cpp"
+ )
+ set(restclient-cpp_VENDOR "d@unwiredcouch.com")
+ set(PROJECT_VENDOR "${restclient-cpp_VENDOR}")
+@@ -77,7 +76,7 @@ configure_file("${CMAKE_CURRENT_BINARY_DIR}/version.h.in"
+ target_include_directories(restclient-cpp PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/include")
+ 
+ target_link_libraries(restclient-cpp
+-  PUBLIC CURL::libcurl
++  PUBLIC CONAN_PKG::libcurl
+   PUBLIC Threads::Threads
+ )
+ 
