@@ -16,7 +16,7 @@ class RestClientCppConan(ConanFile):
         "shared=False",
         "fPIC=True",
     )
-    generators = "cmake"
+    generators = "cmake", "cmake_multi"
     exports = "LICENSE"
     exports_sources = "CMakeLists.txt", "patches/**"
     revision_mode = "scm"
@@ -51,7 +51,8 @@ class RestClientCppConan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["restclient-cpp" if self.settings.build_type != "Debug" else "restclient-cppd"]
+        self.cpp_info.libs = ["restclient-cppd" if self.settings.build_type == "Debug" else "restclient-cpp"]
 
     def requirements(self):
         self.requires.add('libcurl/7.68.0')
+        self.requires.add('openssl/1.1.1g')
